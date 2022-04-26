@@ -23,6 +23,9 @@ html_dependency_winbox <- function(){
 #' @param msg Message to display.
 #' @param session A valid shiny `session`.
 #'
+#' @return No value.
+#'
+#' @name WinBox
 #' @export
 WinBox <- function(title, ui, options = list(), id = NULL, session = shiny::getDefaultReactiveDomain()) {
   res <- utils::getFromNamespace("processDeps", "shiny")(ui, session)
@@ -35,5 +38,11 @@ WinBox <- function(title, ui, options = list(), id = NULL, session = shiny::getD
     deps = res$deps,
     options = options
   ))
+}
+
+#' @rdname WinBox
+#' @export
+closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
+  session$sendCustomMessage("WinBox-close", list(id = id))
 }
 

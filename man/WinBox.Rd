@@ -2,6 +2,7 @@
 % Please edit documentation in R/WinBox.R
 \name{WinBox}
 \alias{WinBox}
+\alias{closeWinBox}
 \title{WinBox}
 \usage{
 WinBox(
@@ -11,11 +12,16 @@ WinBox(
   id = NULL,
   session = shiny::getDefaultReactiveDomain()
 )
+
+closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{session}{A valid shiny \code{session}.}
 
 \item{msg}{Message to display.}
+}
+\value{
+No value.
 }
 \description{
 Show a vanilla JavaScript alert.

@@ -11,9 +11,17 @@ Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
   options.onclose = function() {
     Shiny.unbindAll($content);
   }
+  if (winboxes.hasOwnProperty(options.id)) {
+    winboxes[options.id].close();
+  }
   var winbox = new WinBox(options);
   var $content = $("#shiny-winbox-" + options.id);
   Shiny.renderContent($content, { html: msg.html, deps: msg.deps });
   //winbox.body.innerHTML = msg.html;
   winboxes[winbox.id] = winbox;
+})
+
+Shiny.addCustomMessageHandler("WinBox-close", (msg) => {
+  winboxes[msg.id].close();
+  delete winboxes[msg.id];
 })
