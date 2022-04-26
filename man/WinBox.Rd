@@ -5,6 +5,7 @@
 \title{WinBox}
 \usage{
 WinBox(
+  title,
   ui,
   options = list(),
   id = NULL,

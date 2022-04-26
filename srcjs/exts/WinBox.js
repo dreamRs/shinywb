@@ -8,10 +8,12 @@ let winboxes = {};
 Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
   var options = msg.options;
   options.html = `<div id="shiny-winbox-${options.id}"></div>`;
-  options.root = document.body;
+  options.onclose = function() {
+    Shiny.unbindAll($content);
+  }
   var winbox = new WinBox(options);
   var $content = $("#shiny-winbox-" + options.id);
   Shiny.renderContent($content, { html: msg.html, deps: msg.deps });
-  winbox.body.innerHTML = msg.html;
+  //winbox.body.innerHTML = msg.html;
   winboxes[winbox.id] = winbox;
 })
