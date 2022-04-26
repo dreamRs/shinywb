@@ -8,7 +8,7 @@
 WinBox(
   title,
   ui,
-  options = list(),
+  options = optionsWinBox(),
   id = NULL,
   session = shiny::getDefaultReactiveDomain()
 )
@@ -16,13 +16,19 @@ WinBox(
 closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
-\item{session}{A valid shiny \code{session}.}
+\item{title}{Title for the window.}
 
-\item{msg}{Message to display.}
+\item{ui}{Content of the window.}
+
+\item{options}{List of options, see \code{\link[=optionsWinBox]{optionsWinBox()}}.}
+
+\item{id}{An unique identifier for the window.}
+
+\item{session}{Shiny session.}
 }
 \value{
 No value.
 }
 \description{
-Show a vanilla JavaScript alert.
+A window manager with JavaScript library \href{https://nextapps-de.github.io/winbox/}{WinBox.js}.
 }

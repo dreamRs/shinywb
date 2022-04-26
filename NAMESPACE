@@ -3,5 +3,7 @@
 export(WinBox)
 export(closeWinBox)
 export(html_dependency_winbox)
+export(optionsWinBox)
+importFrom(shiny,getDefaultReactiveDomain)
 importFrom(shiny,singleton)
 importFrom(shiny,tags)
