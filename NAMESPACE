@@ -2,6 +2,7 @@
 
 export(WinBox)
 export(closeWinBox)
+export(controlsWinBox)
 export(html_dependency_winbox)
 export(optionsWinBox)
 importFrom(shiny,getDefaultReactiveDomain)

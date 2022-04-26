@@ -9,6 +9,7 @@ WinBox(
   title,
   ui,
   options = optionsWinBox(),
+  controls = controlsWinBox(),
   id = NULL,
   session = shiny::getDefaultReactiveDomain()
 )
@@ -21,6 +22,8 @@ closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 \item{ui}{Content of the window.}
 
 \item{options}{List of options, see \code{\link[=optionsWinBox]{optionsWinBox()}}.}
+
+\item{controls}{List of controls, see \code{\link[=controlsWinBox]{controlsWinBox()}}.}
 
 \item{id}{An unique identifier for the window.}
 

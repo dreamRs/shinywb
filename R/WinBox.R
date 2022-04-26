@@ -25,6 +25,7 @@ html_dependency_winbox <- function(){
 #' @param title Title for the window.
 #' @param ui Content of the window.
 #' @param options List of options, see [optionsWinBox()].
+#' @param controls List of controls, see [controlsWinBox()].
 #' @param id An unique identifier for the window.
 #' @param session Shiny session.
 #'
@@ -39,6 +40,7 @@ html_dependency_winbox <- function(){
 WinBox <- function(title,
                    ui,
                    options = optionsWinBox(),
+                   controls = controlsWinBox(),
                    id = NULL,
                    session = shiny::getDefaultReactiveDomain()) {
   res <- utils::getFromNamespace("processDeps", "shiny")(ui, session)
@@ -46,6 +48,7 @@ WinBox <- function(title,
     id <- genId()
   options$id <- id
   options$title <- as.character(title)
+  options$class <- controls
   session$sendCustomMessage("WinBox-show", list(
     html = res$html,
     deps = res$deps,
@@ -108,3 +111,42 @@ optionsWinBox <- function(width = NULL,
 }
 
 
+#' WinBox controls
+#'
+#' @param animation If `FALSE`, disables the windows transition animation.
+#' @param shadow If `FALSE`, disables the windows drop shadow.
+#' @param header If `FALSE`, hide the window header incl. title and toolbar.
+#' @param min If `FALSE`, hide the minimize icon.
+#' @param max If `FALSE`, hide the maximize icon.
+#' @param full If `FALSE`, hide the fullscreen icon.
+#' @param close If `FALSE`, hide the close icon.
+#' @param resize If `FALSE`, disables the window resizing capability.
+#' @param move If `FALSE`, disables the window moving capability.
+#'
+#' @return A `list` of controls to use in [WinBox()].
+#' @export
+#'
+#' @example inst/examples/controls.R
+controlsWinBox <- function(animation = TRUE,
+                           shadow = TRUE,
+                           header = TRUE,
+                           min = TRUE,
+                           max = TRUE,
+                           full = FALSE,
+                           close = TRUE,
+                           resize = TRUE,
+                           move = TRUE) {
+  classes <- c(
+    animation = animation,
+    shadow = shadow,
+    header = header,
+    min = min,
+    max = max,
+    full = full,
+    close = close,
+    resize = resize,
+    move = move
+  )
+  classes <- paste0("no-", names(classes)[!unname(classes)])
+  list1(classes)
+}
