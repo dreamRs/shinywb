@@ -1,18 +1,30 @@
 
-#' Dependencies
+#' @title Winbox JavaScript Dependencies
 #'
-#' Include dependencies, place anywhere in the shiny UI.
+#' @description Include dependencies, place anywhere in the shiny UI.
+#' 
+#' @param css_rules CSS rules to be included in a `style` tag in the document head.
+#'  By default it set a `min-height` to the body element.
 #'
-#' @importFrom shiny singleton tags
+#' @importFrom htmltools htmlDependency doRenderTags tags
+#' @importFrom utils packageVersion
 #'
 #' @export
-html_dependency_winbox <- function(){
-  htmltools::htmlDependency(
+#' 
+#' @example inst/examples/basic.R
+html_dependency_winbox <- function(css_rules = "body {min-height: 100vh;}") {
+  if (!is.null(css_rules)) {
+    styles <- doRenderTags(tags$style(css_rules))
+  } else {
+    styles <- NULL
+  }
+  htmlDependency(
     name = "winbox",
-    version = packageVersion("winboxr"),
+    version = packageVersion("shinywb"),
     src = list(file = "packer"),
-    package = "winboxr",
-    script = "WinBox.js"
+    package = "shinywb",
+    script = "WinBox.js", 
+    head = styles
   )
 }
 
@@ -27,6 +39,7 @@ html_dependency_winbox <- function(){
 #' @param options List of options, see [wbOptions()].
 #' @param controls List of controls, see [wbControls()].
 #' @param id An unique identifier for the window.
+#' @param padding Padding for the window content.
 #' @param session Shiny session.
 #'
 #' @return No value.
@@ -35,6 +48,7 @@ html_dependency_winbox <- function(){
 #' @export
 #'
 #' @importFrom shiny getDefaultReactiveDomain
+#' @importFrom htmltools tags css
 #'
 #' @examples
 WinBox <- function(title,
@@ -42,7 +56,10 @@ WinBox <- function(title,
                    options = wbOptions(),
                    controls = wbControls(),
                    id = NULL,
+                   padding = "0 10px",
                    session = shiny::getDefaultReactiveDomain()) {
+  if (!is.null(padding))
+    ui <- tags$div(ui, style = css(padding = padding))
   res <- utils::getFromNamespace("processDeps", "shiny")(ui, session)
   if (is.null(id))
     id <- genId()

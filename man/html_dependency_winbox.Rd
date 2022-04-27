@@ -2,10 +2,37 @@
 % Please edit documentation in R/WinBox.R
 \name{html_dependency_winbox}
 \alias{html_dependency_winbox}
-\title{Dependencies}
+\title{Winbox JavaScript Dependencies}
 \usage{
-html_dependency_winbox()
+html_dependency_winbox(css_rules = "body {min-height: 100vh;}")
+}
+\arguments{
+\item{css_rules}{CSS rules to be included in a \code{style} tag in the document head.
+By default it set a \code{min-height} to the body element.}
 }
 \description{
 Include dependencies, place anywhere in the shiny UI.
+}
+\examples{
+
+library(shiny)
+library(shinywb)
+
+ui <- fluidPage(
+  html_dependency_winbox()
+)
+
+server <- function(input, output, session) {
+  
+  WinBox(
+    title = "WinBox",
+    ui = tagList(
+      tags$h3("Hello from WinBox!")
+    )
+  )
+  
+}
+
+if (interactive())
+  shinyApp(ui, server)
 }

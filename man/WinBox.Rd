@@ -11,6 +11,7 @@ WinBox(
   options = wbOptions(),
   controls = wbControls(),
   id = NULL,
+  padding = "0 10px",
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -26,6 +27,8 @@ closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 \item{controls}{List of controls, see \code{\link[=wbControls]{wbControls()}}.}
 
 \item{id}{An unique identifier for the window.}
+
+\item{padding}{Padding for the window content.}
 
 \item{session}{Shiny session.}
 }

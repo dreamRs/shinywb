@@ -1,20 +1,19 @@
 
 library(shiny)
+library(shinywb)
 
 ui <- fluidPage(
-  tags$style("body {min-height: 100vh;}"),
   html_dependency_winbox(),
-  actionButton(inputId = "show1", label = "Show WinBox"),
+  actionButton(inputId = "show", label = "Show WinBox"),
   verbatimTextOutput("res")
 )
 
 server <- function(input, output, session) {
 
-  observeEvent(input$show1, {
+  observeEvent(input$show, {
     WinBox(
       title = "WinBox window",
-      ui = tags$div(
-        style = "padding: 10px;",
+      ui = tagList(
         tags$h2("Hello from WinBox!"),
         "Text content of winbox.",
         selectInput("month", "Select a month:", month.name)
@@ -26,4 +25,5 @@ server <- function(input, output, session) {
 
 }
 
-shinyApp(ui, server)
+if (interactive())
+  shinyApp(ui, server)
