@@ -25,7 +25,7 @@ server <- function(input, output, session) {
             ax_stroke(width = 1)
         })
       ),
-      options = optionsWinBox(height = 630)
+      options = wbOptions(height = 630)
     )
   })
 

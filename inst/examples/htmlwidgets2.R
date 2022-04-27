@@ -23,7 +23,7 @@ server <- function(input, output, session) {
           reactable(data = midwest, bordered = TRUE, striped = TRUE)
         })
       ),
-      options = optionsWinBox(height = 630)
+      options = wbOptions(height = 630)
     )
   })
   

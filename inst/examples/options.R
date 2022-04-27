@@ -17,7 +17,14 @@ server <- function(input, output, session) {
         tags$h2("Hello from WinBox!"),
         "Text content of winbox."
       ),
-      options = optionsWinBox(background = "#112446", border = "0.5em")
+      options = wbOptions(
+        background = "#112446", 
+        border = "0.5em",
+        x = "center",
+        y = "center",
+        width = "50%",
+        height = "50%"
+      )
     )
   })
 

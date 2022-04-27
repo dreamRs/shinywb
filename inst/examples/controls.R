@@ -17,7 +17,11 @@ server <- function(input, output, session) {
         tags$h2("Hello from WinBox!"),
         "Text content of winbox."
       ),
-      controls = controlsWinBox(min = FALSE, max = FALSE, resize = FALSE)
+      controls = wbControls(
+        min = FALSE, 
+        max = FALSE,
+        resize = FALSE
+      )
     )
   })
 

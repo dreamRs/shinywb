@@ -24,8 +24,8 @@ html_dependency_winbox <- function(){
 #'
 #' @param title Title for the window.
 #' @param ui Content of the window.
-#' @param options List of options, see [optionsWinBox()].
-#' @param controls List of controls, see [controlsWinBox()].
+#' @param options List of options, see [wbOptions()].
+#' @param controls List of controls, see [wbControls()].
 #' @param id An unique identifier for the window.
 #' @param session Shiny session.
 #'
@@ -39,8 +39,8 @@ html_dependency_winbox <- function(){
 #' @examples
 WinBox <- function(title,
                    ui,
-                   options = optionsWinBox(),
-                   controls = controlsWinBox(),
+                   options = wbOptions(),
+                   controls = wbControls(),
                    id = NULL,
                    session = shiny::getDefaultReactiveDomain()) {
   res <- utils::getFromNamespace("processDeps", "shiny")(ui, session)
@@ -80,19 +80,19 @@ closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @export
 #'
 #' @example inst/examples/options.R
-optionsWinBox <- function(width = NULL,
-                          height = NULL,
-                          minwidth = NULL,
-                          minheight = NULL,
-                          x = NULL,
-                          y = NULL,
-                          max = NULL,
-                          top = NULL,
-                          right = NULL,
-                          bottom = NULL,
-                          left = NULL,
-                          background = NULL,
-                          border = NULL) {
+wbOptions <- function(width = NULL,
+                      height = NULL,
+                      minwidth = NULL,
+                      minheight = NULL,
+                      x = NULL,
+                      y = NULL,
+                      max = NULL,
+                      top = NULL,
+                      right = NULL,
+                      bottom = NULL,
+                      left = NULL,
+                      background = NULL,
+                      border = NULL) {
   dropNulls(list(
     width = width,
     height = height,
@@ -127,15 +127,15 @@ optionsWinBox <- function(width = NULL,
 #' @export
 #'
 #' @example inst/examples/controls.R
-controlsWinBox <- function(animation = TRUE,
-                           shadow = TRUE,
-                           header = TRUE,
-                           min = TRUE,
-                           max = TRUE,
-                           full = FALSE,
-                           close = TRUE,
-                           resize = TRUE,
-                           move = TRUE) {
+wbControls <- function(animation = TRUE,
+                       shadow = TRUE,
+                       header = TRUE,
+                       min = TRUE,
+                       max = TRUE,
+                       full = FALSE,
+                       close = TRUE,
+                       resize = TRUE,
+                       move = TRUE) {
   classes <- c(
     animation = animation,
     shadow = shadow,

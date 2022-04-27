@@ -2,9 +2,9 @@
 
 export(WinBox)
 export(closeWinBox)
-export(controlsWinBox)
 export(html_dependency_winbox)
-export(optionsWinBox)
+export(wbControls)
+export(wbOptions)
 importFrom(shiny,getDefaultReactiveDomain)
 importFrom(shiny,singleton)
 importFrom(shiny,tags)
