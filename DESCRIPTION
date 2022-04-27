@@ -9,7 +9,7 @@ Authors@R: c(
              role = "cph",
              comment = "winbox <https://nextapps-de.github.io/winbox/>")
     )
-Description: Interface to 'WinBox' 'JavaScript' library to use in 'shiny' Applications.
+Description: Interface to 'WinBox' 'JavaScript' library to use in 'shiny' applications.
     'WinBox' is a modern HTML5 window manager for the web, <https://nextapps-de.github.io/winbox/>.
 License: MIT + file LICENSE
 Encoding: UTF-8
