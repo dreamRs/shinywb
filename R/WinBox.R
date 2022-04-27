@@ -12,7 +12,7 @@
 #' @export
 #' 
 #' @example inst/examples/basic.R
-html_dependency_winbox <- function(css_rules = "body {min-height: 100vh;}") {
+html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.modal{display:block;overflow:unset}") {
   if (!is.null(css_rules)) {
     styles <- doRenderTags(tags$style(css_rules))
   } else {
@@ -62,7 +62,7 @@ WinBox <- function(title,
     ui <- tags$div(ui, style = css(padding = padding))
   res <- utils::getFromNamespace("processDeps", "shiny")(ui, session)
   if (is.null(id))
-    id <- genId()
+    id <- paste0("winbox-", genId())
   options$id <- id
   options$title <- as.character(title)
   options$class <- controls
@@ -92,6 +92,7 @@ closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @param background Set the background of the window (supports all CSS styles which are also supported by the style-attribute "background",
 #'  e.g. colors, transparent colors, hsl, gradients, background images).
 #' @param border Set the border width of the window (supports all css units, like px, %, em, rem, vh, vmax).
+#' @param modal Shows the window as modal.
 #'
 #' @return A `list` of options to use in [WinBox()].
 #' @export
@@ -109,7 +110,8 @@ wbOptions <- function(width = NULL,
                       bottom = NULL,
                       left = NULL,
                       background = NULL,
-                      border = NULL) {
+                      border = NULL,
+                      modal = NULL) {
   dropNulls(list(
     width = width,
     height = height,
@@ -123,7 +125,8 @@ wbOptions <- function(width = NULL,
     bottom = bottom,
     left = left,
     background = background,
-    border = border
+    border = border,
+    modal = modal
   ))
 }
 

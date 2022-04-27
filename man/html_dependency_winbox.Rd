@@ -4,7 +4,9 @@
 \alias{html_dependency_winbox}
 \title{Winbox JavaScript Dependencies}
 \usage{
-html_dependency_winbox(css_rules = "body {min-height: 100vh;}")
+html_dependency_winbox(
+  css_rules = "body{min-height:100vh}.winbox.modal{display:block;overflow:unset}"
+)
 }
 \arguments{
 \item{css_rules}{CSS rules to be included in a \code{style} tag in the document head.

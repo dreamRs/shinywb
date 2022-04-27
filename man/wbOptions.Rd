@@ -17,7 +17,8 @@ wbOptions(
   bottom = NULL,
   left = NULL,
   background = NULL,
-  border = NULL
+  border = NULL,
+  modal = NULL
 )
 }
 \arguments{
@@ -36,6 +37,8 @@ wbOptions(
 e.g. colors, transparent colors, hsl, gradients, background images).}
 
 \item{border}{Set the border width of the window (supports all css units, like px, \%, em, rem, vh, vmax).}
+
+\item{modal}{Shows the window as modal.}
 }
 \value{
 A \code{list} of options to use in \code{\link[=WinBox]{WinBox()}}.
@@ -50,12 +53,13 @@ library(shinywb)
 
 ui <- fluidPage(
   html_dependency_winbox(),
-  actionButton(inputId = "show", label = "Show WinBox")
+  actionButton(inputId = "show1", label = "Show WinBox"),
+  actionButton(inputId = "show2", label = "Show WinBox as modal")
 )
 
 server <- function(input, output, session) {
 
-  observeEvent(input$show, {
+  observeEvent(input$show1, {
     WinBox(
       title = "Custom background color and border",
       ui = tagList(
@@ -73,7 +77,16 @@ server <- function(input, output, session) {
     )
   })
 
-  output$res <- renderPrint(input$month)
+  observeEvent(input$show2, {
+    WinBox(
+      title = "WinBox as modal",
+      ui = tagList(
+        tags$h2("Hello from WinBox!"),
+        "Text content of winbox."
+      ),
+      options = wbOptions(modal = TRUE)
+    )
+  })
 
 }
 

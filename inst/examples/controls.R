@@ -24,8 +24,6 @@ server <- function(input, output, session) {
     )
   })
 
-  output$res <- renderPrint(input$month)
-
 }
 
 if (interactive())
