@@ -96,6 +96,7 @@ closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #'  e.g. colors, transparent colors, hsl, gradients, background images).
 #' @param border Set the border width of the window (supports all css units, like px, %, em, rem, vh, vmax).
 #' @param modal Shows the window as modal.
+#' @param index Set the initial z-index of the window to this value (could be increased automatically when unfocused/focused).
 #'
 #' @return A `list` of options to use in [WinBox()].
 #' @export
@@ -114,7 +115,8 @@ wbOptions <- function(width = NULL,
                       left = NULL,
                       background = NULL,
                       border = NULL,
-                      modal = NULL) {
+                      modal = NULL,
+                      index = 1045) {
   dropNulls(list(
     width = width,
     height = height,
@@ -129,7 +131,8 @@ wbOptions <- function(width = NULL,
     left = left,
     background = background,
     border = border,
-    modal = modal
+    modal = modal,
+    index = index
   ))
 }
 

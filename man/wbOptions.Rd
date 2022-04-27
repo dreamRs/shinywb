@@ -18,7 +18,8 @@ wbOptions(
   left = NULL,
   background = NULL,
   border = NULL,
-  modal = NULL
+  modal = NULL,
+  index = 1045
 )
 }
 \arguments{
@@ -39,6 +40,8 @@ e.g. colors, transparent colors, hsl, gradients, background images).}
 \item{border}{Set the border width of the window (supports all css units, like px, \%, em, rem, vh, vmax).}
 
 \item{modal}{Shows the window as modal.}
+
+\item{index}{Set the initial z-index of the window to this value (could be increased automatically when unfocused/focused).}
 }
 \value{
 A \code{list} of options to use in \code{\link[=WinBox]{WinBox()}}.
