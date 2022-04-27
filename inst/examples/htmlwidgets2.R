@@ -1,8 +1,8 @@
 
 library(shiny)
-library(apexcharter)
+library(reactable)
 library(ggplot2)
-data("economics", package = "ggplot2")
+data("midwest", package = "ggplot2")
 
 ui <- fluidPage(
   tags$style("body {min-height: 100vh;}"),
@@ -11,24 +11,22 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-
+  
   observeEvent(input$show, {
     inputId <- paste0("var", input$show)
     WinBox(
       title = "With an htmlwidget",
       ui = tags$div(
         style = "padding: 10px;",
-        tags$h3("Economic chart"),
-        selectInput(inputId, "Select a variable:", names(economics)[-1]),
-        renderApexchart({
-          apex(data = economics, type = "line", mapping = aes(x = date, y = !!sym(input[[inputId]]))) %>%
-            ax_stroke(width = 1)
+        tags$h3("Midwest demographics"),
+        renderReactable({
+          reactable(data = midwest, bordered = TRUE, striped = TRUE)
         })
       ),
       options = optionsWinBox(height = 630)
     )
   })
-
+  
 }
 
 shinyApp(ui, server)
