@@ -5,14 +5,16 @@ import "winbox/dist/css/winbox.min.css";
 
 let winboxes = {};
 
-Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
+Shiny.addCustomMessageHandler("WinBox-show", msg => {
   var options = msg.options;
   options.html = `<div id="shiny-winbox-${options.id}"></div>`;
   options.onclose = function() {
     Shiny.unbindAll($content);
   };
   options.onresize = function(width, height) {
-    $("#shiny-winbox-" + options.id).find(".html-widget").trigger("resize");
+    $("#shiny-winbox-" + options.id)
+      .find(".html-widget, .shiny-plot-output")
+      .trigger("resize");
   };
   if (winboxes.hasOwnProperty(options.id)) {
     winboxes[options.id].close();
@@ -24,7 +26,8 @@ Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
   winboxes[winbox.id] = winbox;
 });
 
-Shiny.addCustomMessageHandler("WinBox-close", (msg) => {
+Shiny.addCustomMessageHandler("WinBox-close", msg => {
   winboxes[msg.id].close();
   delete winboxes[msg.id];
 });
+
