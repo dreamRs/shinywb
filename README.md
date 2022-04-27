@@ -41,7 +41,11 @@ server <- function(input, output, session) {
         tags$h3("Economic chart"),
         selectInput(inputId, "Select a variable:", names(economics)[-1]),
         renderApexchart({
-          apex(data = economics, type = "line", mapping = aes(x = date, y = !!sym(input[[inputId]]))) %>%
+          apex(
+            data = economics, 
+            type = "line", 
+            mapping = aes(x = date, y = !!sym(input[[inputId]]))
+          ) %>%
             ax_stroke(width = 1)
         })
       ),
