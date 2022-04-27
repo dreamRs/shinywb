@@ -13,14 +13,15 @@ ui <- fluidPage(
 server <- function(input, output, session) {
 
   observeEvent(input$show, {
+    inputId <- paste0("var", input$show)
     WinBox(
       title = "With an htmlwidget",
       ui = tags$div(
         style = "padding: 10px;",
         tags$h2("Economic chart"),
-        selectInput("var", "Select a variable:", names(economics)[-1]),
+        selectInput(inputId, "Select a variable:", names(economics)[-1]),
         renderApexchart({
-          apex(data = economics, type = "line", mapping = aes(x = date, y = !!sym(input$var))) %>%
+          apex(data = economics, type = "line", mapping = aes(x = date, y = !!sym(input[[inputId]]))) %>%
             ax_stroke(width = 1)
         })
       ),

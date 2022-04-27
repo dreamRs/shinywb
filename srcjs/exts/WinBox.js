@@ -10,7 +10,10 @@ Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
   options.html = `<div id="shiny-winbox-${options.id}"></div>`;
   options.onclose = function() {
     Shiny.unbindAll($content);
-  }
+  };
+  options.onresize = function(width, height) {
+    $("#shiny-winbox-" + options.id).find(".html-widget").trigger("resize");
+  };
   if (winboxes.hasOwnProperty(options.id)) {
     winboxes[options.id].close();
   }
@@ -19,9 +22,9 @@ Shiny.addCustomMessageHandler("WinBox-show", (msg) => {
   Shiny.renderContent($content, { html: msg.html, deps: msg.deps });
   //winbox.body.innerHTML = msg.html;
   winboxes[winbox.id] = winbox;
-})
+});
 
 Shiny.addCustomMessageHandler("WinBox-close", (msg) => {
   winboxes[msg.id].close();
   delete winboxes[msg.id];
-})
+});
