@@ -50,7 +50,7 @@ html_dependency_winbox <- function(css_rules = "body {min-height: 100vh;}") {
 #' @importFrom shiny getDefaultReactiveDomain
 #' @importFrom htmltools tags css
 #'
-#' @examples
+#' @example inst/examples/default.R
 WinBox <- function(title,
                    ui,
                    options = wbOptions(),
