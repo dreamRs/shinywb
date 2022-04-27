@@ -11,7 +11,7 @@ WinBox(
   options = wbOptions(),
   controls = wbControls(),
   id = NULL,
-  padding = "0 10px",
+  padding = "5px 10px",
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -26,17 +26,21 @@ closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 
 \item{controls}{List of controls, see \code{\link[=wbControls]{wbControls()}}.}
 
-\item{id}{An unique identifier for the window.}
+\item{id}{An unique identifier for the window, if a window with the same \code{id} is already open,
+it will be closed before opening the new one}
 
 \item{padding}{Padding for the window content.}
 
 \item{session}{Shiny session.}
 }
 \value{
-No value.
+No value, a window is openned in the UI.
 }
 \description{
 A window manager with JavaScript library \href{https://nextapps-de.github.io/winbox/}{WinBox.js}.
+}
+\note{
+You need to include \code{\link[=html_dependency_winbox]{html_dependency_winbox()}} in your UI definition for this function to work.
 }
 \examples{
 

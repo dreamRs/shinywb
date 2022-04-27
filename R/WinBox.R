@@ -38,11 +38,14 @@ html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.mo
 #' @param ui Content of the window.
 #' @param options List of options, see [wbOptions()].
 #' @param controls List of controls, see [wbControls()].
-#' @param id An unique identifier for the window.
+#' @param id An unique identifier for the window, if a window with the same `id` is already open,
+#'  it will be closed before opening the new one
 #' @param padding Padding for the window content.
 #' @param session Shiny session.
 #'
-#' @return No value.
+#' @return No value, a window is openned in the UI.
+#' 
+#' @note You need to include [html_dependency_winbox()] in your UI definition for this function to work.
 #'
 #' @name WinBox
 #' @export
@@ -56,7 +59,7 @@ WinBox <- function(title,
                    options = wbOptions(),
                    controls = wbControls(),
                    id = NULL,
-                   padding = "0 10px",
+                   padding = "5px 10px",
                    session = shiny::getDefaultReactiveDomain()) {
   if (!is.null(padding))
     ui <- tags$div(ui, style = css(padding = padding))
