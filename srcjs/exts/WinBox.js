@@ -10,6 +10,7 @@ Shiny.addCustomMessageHandler("WinBox-show", msg => {
   options.html = `<div id="shiny-winbox-${options.id}"></div>`;
   options.onclose = function() {
     Shiny.unbindAll($content);
+    delete winboxes[options.id];
   };
   options.onresize = function(width, height) {
     $("#shiny-winbox-" + options.id)
