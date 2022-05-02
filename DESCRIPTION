@@ -7,7 +7,7 @@ Authors@R: c(
       person(given = "Thomas",
              family = "Wilkerling",
              role = "cph",
-             comment = "winbox <https://nextapps-de.github.io/winbox/>")
+             comment = "WinBox JavaScript library <https://nextapps-de.github.io/winbox/>")
     )
 Description: Interface to 'WinBox' 'JavaScript' library to use in 'shiny' applications.
     'WinBox' is a modern HTML5 window manager for the web, <https://nextapps-de.github.io/winbox/>.
