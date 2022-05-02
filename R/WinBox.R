@@ -2,7 +2,7 @@
 #' @title Winbox JavaScript Dependencies
 #'
 #' @description Include dependencies, place anywhere in the shiny UI.
-#' 
+#'
 #' @param css_rules CSS rules to be included in a `style` tag in the document head.
 #'  By default it set a `min-height` to the body element.
 #'
@@ -10,7 +10,7 @@
 #' @importFrom utils packageVersion
 #'
 #' @export
-#' 
+#'
 #' @example inst/examples/basic.R
 html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.modal{display:block;overflow:unset}") {
   if (!is.null(css_rules)) {
@@ -23,7 +23,7 @@ html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.mo
     version = packageVersion("shinywb"),
     src = list(file = "packer"),
     package = "shinywb",
-    script = "WinBox.js", 
+    script = "WinBox.js",
     head = styles
   )
 }
@@ -44,7 +44,7 @@ html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.mo
 #' @param session Shiny session.
 #'
 #' @return No value, a window is openned in the UI.
-#' 
+#'
 #' @note You need to include [html_dependency_winbox()] in your UI definition for this function to work.
 #'
 #' @name WinBox
@@ -79,7 +79,7 @@ WinBox <- function(title,
 #' @rdname WinBox
 #' @export
 closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
-  session$sendCustomMessage("WinBox-close", list(id = id))
+  session$sendCustomMessage("WinBox-close", dropNulls(list(id = id)))
 }
 
 

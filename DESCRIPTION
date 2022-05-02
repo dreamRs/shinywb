@@ -1,6 +1,6 @@
 Package: shinywb
 Title: 'WinBox' Window for 'shiny' Applications
-Version: 0.0.0.9100
+Version: 0.0.0.9110
 Authors@R: c(
       person("Victor", "Perrier", , "victor.perrier@dreamrs.fr", role = c("aut", "cre")),
       person("Fanny", "Meyer", role = "aut"),

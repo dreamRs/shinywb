@@ -27,7 +27,17 @@ Shiny.addCustomMessageHandler("WinBox-show", msg => {
 });
 
 Shiny.addCustomMessageHandler("WinBox-close", msg => {
-  winboxes[msg.id].close();
-  delete winboxes[msg.id];
+  if (msg.hasOwnProperty("id")) {
+    if (winboxes.hasOwnProperty(msg.id)) {
+      winboxes[msg.id].close();
+      delete winboxes[msg.id];
+    }
+  } else {
+    if (winboxes.length > 0) {
+      var last = winboxes.at(-1);
+      winboxes[last].close();
+      delete winboxes[last];
+    }
+  }
 });
 
