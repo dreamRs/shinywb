@@ -23,6 +23,12 @@ Shiny.addCustomMessageHandler("WinBox-show", msg => {
   var winbox = new WinBox(options);
   var $content = $("#shiny-winbox-" + options.id);
   Shiny.renderContent($content, { html: msg.html, deps: msg.deps });
+  if (!options.hasOwnProperty("height") && msg.auto_height) {
+    setTimeout(function() {
+      winbox.height = $content.height() + 45;
+      winbox.resize();
+    }, 100);
+  }
   //winbox.body.innerHTML = msg.html;
   winboxes[winbox.id] = winbox;
 });

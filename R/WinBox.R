@@ -41,6 +41,8 @@ html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.mo
 #' @param id An unique identifier for the window, if a window with the same `id` is already open,
 #'  it will be closed before opening the new one
 #' @param padding Padding for the window content.
+#' @param auto_height Automatically set height of the window according to content.
+#'  Note that if content does not have a fix height it may not work properly.
 #' @param session Shiny session.
 #'
 #' @return No value, a window is openned in the UI.
@@ -60,6 +62,7 @@ WinBox <- function(title,
                    controls = wbControls(),
                    id = NULL,
                    padding = "5px 10px",
+                   auto_height = FALSE,
                    session = shiny::getDefaultReactiveDomain()) {
   if (!is.null(padding))
     ui <- tags$div(ui, style = css(padding = padding))
@@ -72,7 +75,8 @@ WinBox <- function(title,
   session$sendCustomMessage("WinBox-show", list(
     html = res$html,
     deps = res$deps,
-    options = options
+    options = options,
+    auto_height = isTRUE(auto_height)
   ))
 }
 

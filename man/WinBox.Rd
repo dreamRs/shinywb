@@ -12,6 +12,7 @@ WinBox(
   controls = wbControls(),
   id = NULL,
   padding = "5px 10px",
+  auto_height = FALSE,
   session = shiny::getDefaultReactiveDomain()
 )
 
@@ -30,6 +31,9 @@ closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 it will be closed before opening the new one}
 
 \item{padding}{Padding for the window content.}
+
+\item{auto_height}{Automatically set height of the window according to content.
+Note that if content does not have a fix height it may not work properly.}
 
 \item{session}{Shiny session.}
 }
