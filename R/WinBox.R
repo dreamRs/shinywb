@@ -39,7 +39,7 @@ html_dependency_winbox <- function(css_rules = "body{min-height:100vh}.winbox.mo
 #' @param options List of options, see [wbOptions()].
 #' @param controls List of controls, see [wbControls()].
 #' @param id An unique identifier for the window, if a window with the same `id` is already open,
-#'  it will be closed before opening the new one
+#'  it will be closed before opening the new one. When closing windows, use `id = NULL` to close last one opened.
 #' @param padding Padding for the window content.
 #' @param auto_height Automatically set height of the window according to content.
 #'  Note that if content does not have a fix height it may not work properly.

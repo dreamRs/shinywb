@@ -40,10 +40,11 @@ Shiny.addCustomMessageHandler("WinBox-close", msg => {
       delete winboxes[msg.id];
     }
   } else {
-    if (winboxes.length > 0) {
-      var last = winboxes.at(-1);
-      winboxes[last].close();
-      delete winboxes[last];
+    var keys = Object.keys(winboxes);
+    var last = keys.length - 1;
+    if (last > -1) {
+      winboxes[keys[last]].close();
+      delete winboxes[keys[last]];
     }
   }
 });

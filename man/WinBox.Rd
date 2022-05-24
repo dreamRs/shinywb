@@ -28,7 +28,7 @@ closeWinBox(id, session = shiny::getDefaultReactiveDomain())
 \item{controls}{List of controls, see \code{\link[=wbControls]{wbControls()}}.}
 
 \item{id}{An unique identifier for the window, if a window with the same \code{id} is already open,
-it will be closed before opening the new one}
+it will be closed before opening the new one. When closing windows, use \code{id = NULL} to close last one opened.}
 
 \item{padding}{Padding for the window content.}
 
