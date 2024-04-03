@@ -12,6 +12,7 @@ wbOptions(
   x = NULL,
   y = NULL,
   max = NULL,
+  min = NULL,
   top = NULL,
   right = NULL,
   bottom = NULL,
@@ -19,7 +20,8 @@ wbOptions(
   background = NULL,
   border = NULL,
   modal = NULL,
-  index = 1045
+  index = 1045,
+  ...
 )
 }
 \arguments{
@@ -30,7 +32,7 @@ wbOptions(
 \item{x, y}{Set the initial position of the window (supports: "right" for x-axis, "bottom" for y-axis,
 "center" for both, units "px" and "\%" for both).}
 
-\item{max}{Automatically toggles the window into maximized state when created.}
+\item{max, min}{Automatically toggles the window into maximized / minimized state when created.}
 
 \item{top, right, bottom, left}{Set or limit the viewport of the window's available area (supports units "px" and "\%").}
 
@@ -42,6 +44,8 @@ e.g. colors, transparent colors, hsl, gradients, background images).}
 \item{modal}{Shows the window as modal.}
 
 \item{index}{Set the initial z-index of the window to this value (could be increased automatically when unfocused/focused).}
+
+\item{...}{Other options, see https://github.com/nextapps-de/winbox?tab=readme-ov-file#options.}
 }
 \value{
 A \code{list} of options to use in \code{\link[=WinBox]{WinBox()}}.

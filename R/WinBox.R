@@ -94,13 +94,14 @@ closeWinBox <- function(id, session = shiny::getDefaultReactiveDomain()) {
 #' @param minwidth,minheight Set the minimal width/height of the window (supports units "px" and "%").
 #' @param x,y Set the initial position of the window (supports: "right" for x-axis, "bottom" for y-axis,
 #'  "center" for both, units "px" and "%" for both).
-#' @param max Automatically toggles the window into maximized state when created.
+#' @param max,min Automatically toggles the window into maximized / minimized state when created.
 #' @param top,right,bottom,left Set or limit the viewport of the window's available area (supports units "px" and "%").
 #' @param background Set the background of the window (supports all CSS styles which are also supported by the style-attribute "background",
 #'  e.g. colors, transparent colors, hsl, gradients, background images).
 #' @param border Set the border width of the window (supports all css units, like px, %, em, rem, vh, vmax).
 #' @param modal Shows the window as modal.
 #' @param index Set the initial z-index of the window to this value (could be increased automatically when unfocused/focused).
+#' @param ... Other options, see https://github.com/nextapps-de/winbox?tab=readme-ov-file#options.
 #'
 #' @return A `list` of options to use in [WinBox()].
 #' @export
@@ -113,6 +114,7 @@ wbOptions <- function(width = NULL,
                       x = NULL,
                       y = NULL,
                       max = NULL,
+                      min = NULL,
                       top = NULL,
                       right = NULL,
                       bottom = NULL,
@@ -120,7 +122,8 @@ wbOptions <- function(width = NULL,
                       background = NULL,
                       border = NULL,
                       modal = NULL,
-                      index = 1045) {
+                      index = 1045,
+                      ...) {
   dropNulls(list(
     width = width,
     height = height,
@@ -129,6 +132,7 @@ wbOptions <- function(width = NULL,
     x = x,
     y = y,
     max = max,
+    min = min,
     top = top,
     right = right,
     bottom = bottom,
@@ -136,7 +140,8 @@ wbOptions <- function(width = NULL,
     background = background,
     border = border,
     modal = modal,
-    index = index
+    index = index,
+    ...
   ))
 }
 

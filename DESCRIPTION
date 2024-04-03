@@ -1,6 +1,6 @@
 Package: shinywb
 Title: 'WinBox' Window for 'shiny' Applications
-Version: 0.0.0.9140
+Version: 0.0.0.9200
 Authors@R: c(
       person("Victor", "Perrier", , "victor.perrier@dreamrs.fr", role = c("aut", "cre")),
       person("Fanny", "Meyer", role = "aut"),
@@ -14,7 +14,7 @@ Description: Interface to 'WinBox' 'JavaScript' library to use in 'shiny' applic
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.1
 Imports: 
     htmltools,
     shiny
