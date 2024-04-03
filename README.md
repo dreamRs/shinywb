@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/dreamRs/shinywb/workflows/R-CMD-check/badge.svg)](https://github.com/dreamRs/shinywb/actions)
+[![R-CMD-check](https://github.com/dreamRs/shinywb/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dreamRs/shinywb/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 > Interface to [WinBox](https://nextapps-de.github.io/winbox/) JavaScript library to use in [shiny](https://shiny.rstudio.com/) applications. WinBox is a modern HTML5 window manager for the web.
